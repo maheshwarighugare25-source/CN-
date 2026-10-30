@@ -1,0 +1,54 @@
+EXP.4-Framing method: Bit Stuffing
+a)Bit Stuffing
+#include <iostream>
+using namespace std;
+int main()
+{
+ string s;
+ cout << "Enter input frame: ";
+ cin >> s;
+ cout<<"Stuffed data:";
+ int count = 0;
+ for (int i = 0; i < s.length(); i++)
+ {
+ cout << s[i];
+ if (s[i] == '1')
+ count++;
+ else
+count = 0;
+  if (count == 5)
+ {
+cout << "0";
+ count = 0;
+  }
+ }
+ return 0;
+}
+//Enter input frame: 10111110111110
+//Stuffed data:1011111001111100
+b) Bit Destuffing
+#include <iostream>
+using namespace std;
+int main()
+{
+ string s;
+ cout << "Enter stuffed data: ";
+ cin >> s;
+ cout<<"Input frame:";
+ int count = 0; for (int i = 0; i < s.length(); i++)
+ {
+ cout << s[i];
+ if (s[i] == '1')
+ count++;
+ else
+count = 0;
+  if (count == 5)
+ {
+i++; // Skip stuffed 0
+ count = 0;
+  }
+ }
+ return 0;
+}
+//Enter stuffed data: 1011111001111100
+//Input frame:10111110111110
